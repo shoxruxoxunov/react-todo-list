@@ -1,25 +1,28 @@
-import { auth, googleProvider } from "../firebase/firebaseConfig";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { toast } from "react-toastify";
-import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useSignup } from "../hooks/useSignup";
+// import { auth, googleProvider } from "../firebase/firebaseConfig";
+// import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+// import { toast } from "react-toastify";
+// import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Signup() {
-  const { dispatch } = useGlobalContext();
+  const { signUpWithGoogleProvider } = useSignup();
+  // const { dispatch } = useGlobalContext();
   const handleGoogleLogin = (e) => {
     e.preventDefault();
+    signUpWithGoogleProvider();
 
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const user = result.user;
-        dispatch({ type: "LOGIN", paylaod: user });
-        toast.success("welcome");
-      })
-      .catch((error) => {
-        const errorMessge = error.message;
-        console.log(error);
-        toast.error(error.Message);
-      });
+    // signInWithPopup(auth, googleProvider)
+    //   .then((result) => {
+    //     const credential = GoogleAuthProvider.credentialFromResult(result);
+    //     const user = result.user;
+    //     dispatch({ type: "LOGIN", paylaod: user });
+    //     toast.success("welcome");
+    //   })
+    //   .catch((error) => {
+    //     const errorMessge = error.message;
+    //     console.log(error);
+    //     toast.error(error.Message);
+    //   });
   };
   return (
     <>
