@@ -1,33 +1,32 @@
 import { useSignup } from "../hooks/useSignup";
-// import { auth, googleProvider } from "../firebase/firebaseConfig";
-// import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-// import { toast } from "react-toastify";
-// import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useRef } from "react";
 
 function Signup() {
-  const { signUpWithGoogleProvider } = useSignup();
-  // const { dispatch } = useGlobalContext();
+  const displayName = useRef();
+  const email = useRef();
+  const password = useRef();
+  const photoURl = useRef();
+  const { signUpWithGoogleProvider, signup } = useSignup();
+
   const handleGoogleLogin = (e) => {
     e.preventDefault();
     signUpWithGoogleProvider();
-
-    // signInWithPopup(auth, googleProvider)
-    //   .then((result) => {
-    //     const credential = GoogleAuthProvider.credentialFromResult(result);
-    //     const user = result.user;
-    //     dispatch({ type: "LOGIN", paylaod: user });
-    //     toast.success("welcome");
-    //   })
-    //   .catch((error) => {
-    //     const errorMessge = error.message;
-    //     console.log(error);
-    //     toast.error(error.Message);
-    //   });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signup(
+      displayName.current.value,
+      email.current.value,
+      password.current.value,
+      photoURl.current.value,
+    );
+  };
+
   return (
     <>
       <div className="grid h-screen w-full place-items-center ">
-        <form className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <div className="flex justify-between gap-[140px]">
             <h1 className="text-lg font-bold md:text-3xl md:font-bold">
               Signup
@@ -61,13 +60,23 @@ function Signup() {
           </div>
           <label className="">
             <input
+              ref={displayName}
               type="text"
               placeholder="Type user-name"
               className="input input-bordered input-primary w-full max-w-xs"
             />
           </label>
+          <label className="">
+            <input
+              ref={photoURl}
+              type="url"
+              placeholder="link to photo"
+              className="input input-bordered input-primary w-full max-w-xs"
+            />
+          </label>
           <label>
             <input
+              ref={email}
               type="text"
               placeholder="Type email"
               className="input input-bordered input-accent w-full max-w-xs"
@@ -75,6 +84,7 @@ function Signup() {
           </label>
           <label>
             <input
+              ref={password}
               type="text"
               placeholder="Type password"
               className="input input-bordered input-info w-full max-w-xs"

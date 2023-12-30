@@ -60,6 +60,11 @@ function Navbar() {
               <div className="form-control text-xs font-light md:text-lg md:font-medium">
                 <p>Welcome {user.displayName}</p>
               </div>
+              <div className="avatar ml-[10px] mr-[10px]">
+                <div className="w-4 md:w-8 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
+                  <img src={user.photoURl} />
+                </div>
+              </div>
               <div className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
                 <button onClick={logout}>Logout</button>
               </div>

@@ -1,11 +1,23 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useSignup } from "../hooks/useSignup";
+import { useRef } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 function Login() {
+  const { signUpWithGoogleProvider } = useSignup();
+  const { login } = useLogin();
+
+  const email = useRef();
+  const password = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(email.current.value, password.current.value);
+  };
   return (
     <>
       <div className="grid h-screen w-full place-items-center ">
-        <form className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <div className="gap[250px] flex justify-between">
             <h1 className="text-lg font-bold md:text-3xl md:font-bold">
               Login
@@ -40,6 +52,7 @@ function Login() {
 
           <label>
             <input
+              ref={email}
               type="text"
               placeholder="Type email"
               className="input input-bordered input-accent w-full max-w-xs"
@@ -47,6 +60,7 @@ function Login() {
           </label>
           <label>
             <input
+              ref={password}
               type="text"
               placeholder="Type password"
               className="input input-bordered input-info w-full max-w-xs"
@@ -56,7 +70,11 @@ function Login() {
             <button className="btn btn-outline btn-success text-xs font-light md:text-lg md:font-bold">
               Login
             </button>
-            <button className="btn btn-outline btn-secondary text-xs font-light md:text-lg md:font-bold">
+            <button
+              type="button"
+              onClick={signUpWithGoogleProvider}
+              className="btn btn-outline btn-secondary text-xs font-light md:text-lg md:font-bold"
+            >
               Google
             </button>
             <Link
