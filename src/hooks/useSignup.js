@@ -12,14 +12,14 @@ export function useSignup() {
   const { dispatch } = useGlobalContext();
 
   //   login and password
-  const signup = (displayName, email, password,photoURl) => {
+  const signup = (displayName, email, password,photoURL) => {
     console.log(displayName, email, password);
     dispatch({ type: "IS_PENDING", error: true });
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         await updateProfile(auth.currentUser, {
           displayName,
-          photoURL:photoURl
+          photoURL:photoURL
         });
         toast.success("welcome !");
         dispatch({ type: "LOGIN", paylaod: userCredential.user });

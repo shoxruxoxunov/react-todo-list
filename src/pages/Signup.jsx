@@ -5,7 +5,7 @@ function Signup() {
   const displayName = useRef();
   const email = useRef();
   const password = useRef();
-  const photoURl = useRef();
+  const photoURL = useRef();
   const { signUpWithGoogleProvider, signup } = useSignup();
 
   const handleGoogleLogin = (e) => {
@@ -19,7 +19,7 @@ function Signup() {
       displayName.current.value,
       email.current.value,
       password.current.value,
-      photoURl.current.value,
+      photoURL.current.value,
     );
   };
 
@@ -68,7 +68,7 @@ function Signup() {
           </label>
           <label className="">
             <input
-              ref={photoURl}
+              ref={photoURL}
               type="url"
               placeholder="link to photo"
               className="input input-bordered input-primary w-full max-w-xs"
