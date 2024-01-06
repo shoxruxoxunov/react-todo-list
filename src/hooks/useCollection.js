@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
-export function useCollection() {
+export function useCollection(col, _q) {
   const [documents, setDocument] = useState(null);
+
+  const q = query(collection(db, col), where(..._q));
+
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "todos"), (snapshot) => {
+    const unsubscribe = onSnapshot(q, (snapshot) => {
       const resulst = [];
       snapshot.docs.forEach((doc) => {
         const todo = { id: doc.id, ...doc.data() };
@@ -16,5 +19,6 @@ export function useCollection() {
     });
     return () => unsubscribe();
   }, []);
+
   return { documents };
 }

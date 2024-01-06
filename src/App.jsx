@@ -22,9 +22,10 @@ import {
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { useEffect } from "react";
 import { auth } from "./firebase/firebaseConfig";
+import Create from "./pages/Create";
 
 function App() {
-  const { user, isAuthReady,dispatch } = useGlobalContext();
+  const { user, isAuthReady, dispatch } = useGlobalContext();
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -37,6 +38,10 @@ function App() {
         {
           index: true,
           element: <Home />,
+        },
+        {
+          path: "create",
+          element: <Create />,
         },
       ],
     },
@@ -52,10 +57,10 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       dispatch({ type: "LOGIN", paylaod: user });
-      dispatch({type:"IS_AUTH_READY"})
+      dispatch({ type: "IS_AUTH_READY" });
     });
   }, []);
-  return isAuthReady &&<RouterProvider router={routes} />;
+  return isAuthReady && <RouterProvider router={routes} />;
 }
 
 export default App;

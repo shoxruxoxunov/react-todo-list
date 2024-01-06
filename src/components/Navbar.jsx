@@ -68,6 +68,9 @@ function Navbar() {
               <div className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
                 <button onClick={logout}>Logout</button>
               </div>
+              <div className="btn-primery btn btn-outline btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
+                <a href="/create">Create</a>
+              </div>
             </div>
           </div>
         </div>

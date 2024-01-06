@@ -4,8 +4,8 @@ import { useCollection } from "../hooks/useCollection";
 import TodoList from "../components/TodoList";
 
 function Home() {
-  const { dispatch } = useContext(GlobalContext);
-  const { documents: todos } = useCollection();
+  const { user, dispatch } = useContext(GlobalContext);
+  const { documents: todos } = useCollection("todos", ["uid", "==", user.uid]);
   return <div>{todos && <TodoList todos={todos} />}</div>;
 }
 
