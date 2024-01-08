@@ -7,34 +7,34 @@ function TodoList({ todos }) {
     <>
       <div className=" w-46 container card mb-[20px] list-none bg-base-100 no-underline shadow-xl md:mb-[20px] md:w-96">
         <div className="card-body">
-          {todos.map((todos) => {
+          {todos.map((todo) => {
             return (
-              <li key={todos.id} className="">
+              <li key={todo.id} className="">
                 <h3 className="text-sm font-medium md:text-2xl md:font-semibold">
-                  {todos.title}
+                  {todo.title}
                 </h3>
                 <p className="text-sm font-light md:text-base md:font-normal">
-                  {todos.body}
+                  {todo.body}
                 </p>
                 <p className="text-sm font-light md:text-base md:font-normal">
-                  {todos.completed}
+                  {todo.completed}
                 </p>
+                <div className="card-actions btn-sm m-auto md:m-auto ">
+                  <button className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
+                    Buy Now
+                  </button>
+                  <div>
+                    <button
+                      onClick={() => deleteTodo("todos", todo.id)}
+                      className="btn btn-warning  btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium"
+                    >
+                      delete
+                    </button>
+                  </div>
+                </div>
               </li>
             );
           })}
-          <div className="card-actions btn-sm m-auto md:m-auto ">
-            <button className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
-              Buy Now
-            </button>
-            <div>
-              <button
-                onClick={() => deleteTodo("todos", todos.id)}
-                className="btn btn-warning  btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium"
-              >
-                delete
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </>
