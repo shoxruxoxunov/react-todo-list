@@ -5,7 +5,7 @@ import { db } from "../firebase/firebaseConfig";
 function useDeleteDoc() {
   const deleteTodo = async (col, id) => {
     await deleteDoc(doc(db, col, id));
-    toast.warning("delete todos");
+    toast.warning("delete resipe");
   };
   return { deleteTodo };
 }

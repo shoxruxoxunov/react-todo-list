@@ -22,9 +22,9 @@ function Navbar() {
             <div className="flex-1">
               <a
                 href="/"
-                className="md:text-md  btn btn-primary btn-active btn-sm text-xs font-light md:btn-secondary md:btn-md md:font-medium"
+                className="md:text-md  btn btn-primary btn-active btn-sm text-xs font-thin md:btn-secondary md:btn-md md:font-medium"
               >
-                Todolist
+                My kitchen
               </a>
             </div>
 
@@ -65,11 +65,13 @@ function Navbar() {
                   <img src={user.photoURL} />
                 </div>
               </div>
-              <div className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
-                <button onClick={logout}>Logout</button>
-              </div>
-              <div className="btn-primery btn btn-outline btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
-                <a href="/create">Create</a>
+              <div className="grid-cols grid gap-1 md:flex">
+                <div className="btn btn-outline btn-secondary btn-sm text-xs  font-thin md:btn-md md:text-base md:font-medium">
+                  <button onClick={logout}>Logout</button>
+                </div>
+                <div className="btn-primery btn btn-outline btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
+                  <a href="/create">Create</a>
+                </div>
               </div>
             </div>
           </div>

@@ -31,7 +31,7 @@ export function useSignup() {
         if (match) {
           const extracted_text = match[1];
           console.log(extracted_text);
-          toast.error(extracted_text);
+          toast.error("extracted_text");
         }
         dispatch({ type: "IS_PENDING", error: false });
         dispatch({ type: "ERROR", error: error.message });
