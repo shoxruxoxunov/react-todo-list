@@ -8,8 +8,8 @@ export function useAddNewDoc() {
   const [isPending, setIsPending] = useState(false);
   const addNewDoc = async (col, data) => {
     console.log(data);
-    console.log(col);
-    console.log(db);
+    // console.log(col);
+    // console.log(db);
 
     setIsPending(true);
     const docRef = await addDoc(collection(db, col), data);

@@ -1,5 +1,7 @@
 import React from "react";
 import { useDeleteDoc } from "../hooks/useDeleteDoc";
+import { Link } from "react-router-dom";
+
 function TodoList({ todos }) {
   const { deleteTodo } = useDeleteDoc();
   console.log(todos);
@@ -17,19 +19,22 @@ function TodoList({ todos }) {
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h3 className="text-sm font-medium md:text-2xl md:font-semibold">
+                <h3 className=" line-clamp-1 text-sm font-medium md:line-clamp-2 md:text-2xl md:font-semibold">
                   {todo.title}
                 </h3>
                 <p className="text-sm font-light md:text-base md:font-normal">
                   {todo.cookingTime}
                 </p>
-                <p className="line-clamp-3 md:line-clamp-5 text-sm font-light md:text-base md:font-normal ">
+                <p className="line-clamp-3 text-sm font-light md:line-clamp-5 md:text-base md:font-normal ">
                   {todo.method}
                 </p>
                 <div className="card-actions btn-sm m-auto md:m-auto ">
-                  <button className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium  ">
+                  <Link
+                    to={`/recipe/${todo.id}`}
+                    className="btn btn-outline btn-secondary btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium  "
+                  >
                     Read More
-                  </button>
+                  </Link>
                   <div>
                     <button
                       onClick={() => deleteTodo("todos", todo.id)}

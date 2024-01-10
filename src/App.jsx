@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Recipe from "./components/Recipe";
 
 // context
 import { useGlobalContext } from "./hooks/useGlobalContext";
@@ -42,6 +43,10 @@ function App() {
         {
           path: "create",
           element: <Create />,
+        },
+        {
+          path: "/recipe/:id",
+          element: <Recipe />,
         },
       ],
     },
