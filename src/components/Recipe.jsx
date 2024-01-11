@@ -16,8 +16,8 @@ function Recipe() {
     <div>
       {document && (
         <>
-          <div className="container flex h-screen w-full place-items-center">
-            <div className="carousel carousel-center max-w-md space-x-4 rounded-box bg-neutral object-fill p-4 md:h-[500px] md:w-[500px]">
+          <div className="container w-full mt-[200px] md:flex md:h-screen md:place-items-center md:justify-center">
+            <div className="carousel carousel-center h-[250px] max-w-md space-x-4 rounded-box bg-neutral object-fill p-4 md:h-[500px] md:w-[500px]">
               {document.image.map((img) => {
                 return (
                   <div className="carousel-item">
@@ -65,8 +65,11 @@ function Recipe() {
                   </span>
                 </div>
 
-                <div className="card-actions mt-[-60px] justify-end">
-                  <Link to="/" className="btn btn-primary">
+                <div className="card-actions justify-end md:mt-[-60px]">
+                  <Link
+                    to="/"
+                    className="btn btn-outline btn-secondary btn-sm text-xs  font-thin md:btn-md md:text-base md:font-medium"
+                  >
                     Home
                   </Link>
                 </div>

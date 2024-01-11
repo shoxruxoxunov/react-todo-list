@@ -7,16 +7,13 @@ import Preview from "../components/Preview";
 // --------------------------------------------------------------
 function Create() {
   const { user } = useGlobalContext();
-  console.log(user.uid);
   const navigate = useNavigate();
-  console.log(navigate);
   const { addNewDoc, isPending, newTodo } = useAddNewDoc();
+
   const title = useRef();
-  // const time = useRef();
   const method = useRef();
   const ingredients = useRef();
   const images = useRef();
-  console.log(images);
   const cookingTime = useRef();
 
   const [image, setImage] = useState([]);
@@ -81,11 +78,7 @@ function Create() {
       <h1 className="my-10 text-center text-lg font-light md:text-4xl md:font-semibold ">
         Create New Recipe
       </h1>
-      <Preview>
-        <div>
-          <h1>{}</h1>
-        </div>
-      </Preview>
+      <Preview></Preview>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <label className="form-control mb-4 w-full max-w-sm md:max-w-lg ">
           <div className="label">
@@ -108,7 +101,7 @@ function Create() {
             placeholder=""
             className="input input-bordered w-full max-w-lg"
           />
-          <div className="">
+          <div className="mt-[5px]">
             <button onClick={handleAddIngridient} className="btn btn-xs">
               Add
             </button>
@@ -150,12 +143,12 @@ function Create() {
             placeholder=""
             className="input input-bordered w-full max-w-lg"
           />
-          <div className=" ">
+          <div className=" mb-[3px] mt-[5px]">
             <button onClick={handleAddImage} className="btn btn-xs">
               Add
             </button>
           </div>
-          <div>
+          <div className="mt-[10px] flex h-[50px] w-[50px] gap-3 rounded-xl md:h-[100px] md:w-[100px] md:gap-9">
             {image.length > 0 &&
               image.map((images) => {
                 return (

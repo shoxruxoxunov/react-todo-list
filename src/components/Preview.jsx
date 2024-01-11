@@ -1,6 +1,4 @@
-import React from "react";
-
-function Preview({image,}) {
+function Preview({ image }) {
   return (
     <div>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
