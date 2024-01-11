@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Recipe from "./components/Recipe";
+import Preview from "./components/Preview";
 
 // context
 import { useGlobalContext } from "./hooks/useGlobalContext";
@@ -43,6 +44,10 @@ function App() {
         {
           path: "create",
           element: <Create />,
+        },
+        {
+          path: "preview",
+          element: <Preview />,
         },
         {
           path: "/recipe/:id",

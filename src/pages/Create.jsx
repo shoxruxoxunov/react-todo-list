@@ -3,6 +3,7 @@ import { useAddNewDoc } from "../hooks/useAddNewDoc";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import Preview from "../components/Preview";
 // --------------------------------------------------------------
 function Create() {
   const { user } = useGlobalContext();
@@ -26,7 +27,6 @@ function Create() {
 
     addNewDoc("todos", {
       title: title.current.value,
-      // time: time.current.value,
       method: method.current.value,
       ingredients: ingredients.current.value,
       images: images.current.value,
@@ -44,8 +44,8 @@ function Create() {
     }
   }, [isPending, newTodo]);
   // -----------------------------------------
-  const handlePrivew = (e) => {
-    e.preventDefault();
+  const handlePrivew = () => {
+    document.getElementById("my_modal_5").showModal();
   };
   // handleAdd---------------------------
   const handleAddIngridient = (e) => {
@@ -81,7 +81,11 @@ function Create() {
       <h1 className="my-10 text-center text-lg font-light md:text-4xl md:font-semibold ">
         Create New Recipe
       </h1>
-
+      <Preview>
+        <div>
+          <h1>{}</h1>
+        </div>
+      </Preview>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <label className="form-control mb-4 w-full max-w-sm md:max-w-lg ">
           <div className="label">
@@ -152,9 +156,18 @@ function Create() {
             </button>
           </div>
           <div>
-            {image.length> 0 && image.map((images)=>{
-              return <img key={images} src={images} alt="" width={100} height={200} />
-            })}
+            {image.length > 0 &&
+              image.map((images) => {
+                return (
+                  <img
+                    key={images}
+                    src={images}
+                    alt=""
+                    width={100}
+                    height={200}
+                  />
+                );
+              })}
           </div>
         </label>
 
@@ -188,6 +201,7 @@ function Create() {
           </div>
           <div>
             <button
+              type="button"
               onClick={() => handlePrivew(handlePrivew)}
               className="btn btn-secondary btn-sm md:btn-md"
             >

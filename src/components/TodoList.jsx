@@ -12,12 +12,17 @@ function TodoList({ todos }) {
           return (
             <li key={todo.id} className="card  w-full bg-base-100 shadow-xl">
               <figure className="px-5 pt-5 md:px-10 md:pt-10">
-                <img
-                  className=" h-[200px] w-[300px] rounded-sm md:h-[200px] md:w-[300px]  md:rounded-xl "
-                  src={todo.images}
-                  alt="shoes"
-                />
+                {todo.image.map((img) => {
+                  return (
+                    <img
+                      className=" h-[200px] w-[300px] rounded-sm md:h-[200px]  md:w-[300px]  md:rounded-xl md:rounded-t"
+                      src={img}
+                      alt="shoes"
+                    />
+                  );
+                })}
               </figure>
+
               <div className="card-body items-center text-center">
                 <h3 className=" line-clamp-1 text-sm font-medium md:line-clamp-2 md:text-2xl md:font-semibold">
                   {todo.title}
