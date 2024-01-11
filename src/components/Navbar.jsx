@@ -2,6 +2,7 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 function Navbar() {
   const { user, dispatch } = useGlobalContext();
   const logout = () => {
@@ -70,7 +71,7 @@ function Navbar() {
                   <button onClick={logout}>Logout</button>
                 </div>
                 <div className="btn-primery btn btn-outline btn-sm text-xs  font-light md:btn-md md:text-base md:font-medium">
-                  <a href="/create">Create</a>
+                  <Link to="/create">Create</Link>
                 </div>
               </div>
             </div>

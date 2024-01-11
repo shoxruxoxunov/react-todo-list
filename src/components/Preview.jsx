@@ -1,4 +1,4 @@
-function Preview({ image }) {
+function Preview() {
   return (
     <div>
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
